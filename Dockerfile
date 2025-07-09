@@ -207,8 +207,11 @@ ENV CHOKIDAR_INTERVAL=5000
 # WAHA variables
 ENV WAHA_ZIPPER=ZIPUNZIP
 
+
+FROM node:18-alpine
+ENV USE_MULTI_DEVICE=true
 # Run command, etc
 EXPOSE 3000
 # Use tini as init system to handle zombie processes properly
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/entrypoint.sh"]
+CMD ["node", "index.js"]
